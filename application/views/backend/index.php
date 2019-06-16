@@ -3,70 +3,6 @@
         <div class="content-header row">
         </div>
         <div class="content-body">
-          <div class="row">
-
-            <div class="col-xl-3 col-lg-6 col-12">
-              <div class="card">
-                <div class="card-content">
-                  <div class="media align-items-stretch">
-                    <div class="p-2 text-center bg-primary bg-darken-2">
-                      <i class="icon-camera font-large-2 white"></i>
-                    </div>
-                    <div class="p-2 bg-gradient-x-primary white media-body">
-                      <h5>Products</h5>
-                      <h5 class="text-bold-400 mb-0"><i class="ft-stack"></i> <?= $cp['cproduk'];?></h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-6 col-12">
-              <div class="card">
-                <div class="card-content">
-                  <div class="media align-items-stretch">
-                    <div class="p-2 text-center bg-danger bg-darken-2">
-                      <i class="icon-user font-large-2 white"></i>
-                    </div>
-                    <div class="p-2 bg-gradient-x-danger white media-body">
-                      <h5>Customers</h5>
-                      <h5 class="text-bold-400 mb-0"><?= $cus['cuser'];?></h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-6 col-12">
-              <div class="card">
-                <div class="card-content">
-                  <div class="media align-items-stretch">
-                    <div class="p-2 text-center bg-warning bg-darken-2">
-                      <i class="icon-basket-loaded font-large-2 white"></i>
-                    </div>
-                    <div class="p-2 bg-gradient-x-warning white media-body">
-                      <h5>Orders</h5>
-                      <h5 class="text-bold-400 mb-0"><?= $cord['cord'];?></h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-6 col-12">
-              <div class="card">
-                <div class="card-content">
-                  <div class="media align-items-stretch">
-                    <div class="p-2 text-center bg-success bg-darken-2">
-                      <i class="icon-wallet font-large-2 white"></i>
-                    </div>
-                    <div class="p-2 bg-gradient-x-success white media-body">
-                      <h5>Profit</h5>
-                      <h5 class="text-bold-400 mb-0"><?= "Rp. ".number_format($sumprof['sprof']);?></h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
           <div class="row match-height">
             <div class="col-xl-6 col-lg-6">
@@ -125,40 +61,7 @@
                     </ul>
                   </div>
                 </div>
-                <div class="card-content">
-                  <div class="card-body">
-                    <p>Data Transaksi Terakhir.</p>
-                    <div class="table-responsive">
-                      <table id="recent-orders" class="table table-hover mb-0 ps-container ps-theme-default">
-                        <thead>
-                          <tr>
-                            <th>Invoice#</th>
-                            <th>Customer Name</th>
-                            <th>Status</th>
-                            <th>Amount</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <?php foreach ($indexlastorder->result_array() as $i)  : ?>
-                            <tr>
-                              <td class="text-truncate"><a href="<?= base_url(); ?>admin/Invoice/<?= $i['pemesanan_kode'];?>"><?= $i['pemesanan_kode'];?></a></td>
-                              <td class="text-truncate"><?= $i['user_nama']; ?></td>
-                              <td class="text-truncate">
-                                <?php if ($i['pemesanan_status']=='selesai'){?>
-                                  <span class="badge badge-default badge-success"><?= $i['pemesanan_status']; ?></span>
-                                <?php } else if($i['pemesanan_status']=='waiting'){?>
-                                  <span class="badge badge-default badge-info"><?= $i['pemesanan_status']; ?></span>
-                                <?php } ?>
-                              </td>
-                              <td class="text-truncate"><?= "Rp. ".number_format($i['pemesanan_total']); ?></td>
-                            </tr>
-                          <?php endforeach; ?>
 
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
             <div class="col-xl-4 col-lg-12">
@@ -172,24 +75,7 @@
                     </ul>
                   </div>
                 </div>
-                <div class="card-content px-1">
-                  <div id="" class="media-list height-300 position-relative">
-                    <?php foreach ($recentuser->result_array() as $usrc) : ?>
-                      <a href="#" class="media border-0">
-                        <div class="media-left pr-1">
-                          <span class="avatar avatar-md avatar-online"><img class="media-object rounded-circle" src="<?= base_url();?>assets/backend/images/portrait/small/avatar-s-7.png" alt="Generic placeholder image">
-                            <i></i>
-                          </span>
-                        </div>
-                        <div class="media-body w-100">
-                          <h6 class="list-group-item-heading"><?= $usrc['user_nama']; ?><span class="font-medium-4 float-right pt-1"><?= "Rp. ".number_format($usrc['pemesanan_total']); ?></span></h6>
-                          <p class="list-group-item-text mb-0"><span class="badge badge-primary"><?= date("d-m-Y",strtotime($usrc['pemesanan_tanggal'])); ?></span></p>
-                        </div>
-                      </a>
-                    <?php endforeach; ?>
-
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>

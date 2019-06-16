@@ -8,40 +8,7 @@ class Mymod extends CI_Model{
         return $res;
     }
 
-    public function countproduk(){
-        $this->db->select('count(*) as cproduk');
-        $this->db->from('produk');
-        $res= $this->db->get();
-        return $res->row_array();
-    }
-
-    public function cuser(){
-        $this->db->select('count(*) as cuser');
-        $this->db->from('user');
-        $this->db->where('user_role','customer');
-        $res= $this->db->get();
-        return $res->row_array();
-    }
-    
-    public function cord(){
-        $this->db->select('count(*) as cord');
-        $this->db->from('pemesanan');
-        $this->db->where('pemesanan_status','selesai');
-        $res= $this->db->get();
-        return $res->row_array();
-    }
-    public function indexlastorder(){
-        $res = $this->db->query("SELECT * FROM pemesanan inner join user on pemesanan.user_id=user.user_id order by pemesanan_tanggal desc limit 5");
-        return $res;
-    }
-    public function sumprof(){
-        $this->db->select('sum(pemesanan_total) as sprof');
-        $this->db->from('pemesanan');
-        $this->db->where('pemesanan_status','selesai');
-        $res= $this->db->get();
-        return $res->row_array();
-    }
-
+  
     public function ViewDetail($table,$where,$data){
         $this->db->select('*');
         $this->db->where($where,$data);
@@ -51,17 +18,13 @@ class Mymod extends CI_Model{
     public function ViewDataWhere($table,$where){
         $this->db->select('*');
         $res=$this->db->get_where($table,$where);
-        return $res->result_array();
+        return $res->result();
     }
-    public function ViewData($table){
+    public function get($table){
         $res=$this->db->get($table);
-        return $res->result_array();
+        return $res->result();
     }
 
-    public function ViewDataRows($table){
-        $res=$this->db->get($table);
-        return $res->num_rows();
-    }
     public function data($table,$number,$offset){
         return $query = $this->db->get('produk',$number,$offset)->result_array();      
     }

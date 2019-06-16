@@ -278,20 +278,8 @@ function initLambert() {
         marker: {
 			// markers and locations------------------
             values: [ {
-                latLng: [ 40.7143528, -74.0059731 ],
-                data: "Lambert  - New York City",
-                options: {
-                    icon: "images/marker.png"
-                }
-            }, {
-                latLng: [ 40.7168183, -73.9973402 ],
-                data: "Lambert - Washington",
-                options: {
-                    icon: "images/marker.png"
-                }
-            }, {
-                latLng: [ 40.73334016, -73.99330616 ],
-                data: "Lambert - Florida",
+                latLng: [ -2.982607, 104.732407 ],
+                data: "Palembang  - Sumatera Selatan",
                 options: {
                     icon: "images/marker.png"
                 }
@@ -464,7 +452,7 @@ function initLambert() {
         }
     });
 	// contact form------------------
-    $("#contactform").submit(function() {
+/*    $("#contactform").submit(function() {
         var a = $(this).attr("action");
         $("#message2").slideUp(750, function() {
             $("#message2").hide();
@@ -485,9 +473,9 @@ function initLambert() {
     });
     $("#contactform input, #contactform textarea").keyup(function() {
         $("#message2").slideUp(1500);
-    });
+    });*/
 	// reservation form------------------
-    $("#reservation-form").submit(function() {
+/*    $("#reservation-form").submit(function() {
         var a = $(this).attr("action");
 
         $("#message").slideUp(750, function() {
@@ -510,7 +498,7 @@ function initLambert() {
             });
         });
         return false;
-    });
+    });*/
     $("#reservation-form input, #reservation-form textarea ").keyup(function() {
         $("#message").slideUp(1500);
     });

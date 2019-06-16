@@ -8,9 +8,9 @@
           </a>
         </li>
         <li class="nav-item mr-auto">
-          <a class="navbar-brand" href="<?= base_url();?>admin">
-            <img class="brand-logo" alt="ORM FLORIST" src="<?= base_url();?>assets/images/logo/thumbnail.png" width="30px" height="25px">
-            <h2 class="brand-text">ORM</h2>
+          <a class="navbar-brand" href="<?= base_url();?>dashboard">
+            <img class="brand-logo" alt="Lan Service Lan Service" src="<?= base_url();?>images/logo/thumbnail.png" width="30px" height="25px">
+            <h3 class="brand-text">Lan Service</h3>
           </a>
         </li>
         <li class="nav-item d-none d-md-block nav-toggle">

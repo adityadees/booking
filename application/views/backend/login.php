@@ -32,7 +32,7 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
               <div class="card-header border-0">
                 <div class="card-title text-center">
                   <div class="p-1">
-                    <img src="<?= base_url();?>assets/images/logo/thumbnail.png" width="142px" height="142px" alt="branding logo">
+                    <img src="<?= base_url();?>images/logo/thumbnail.png" width="142px" height="80px" alt="branding logo">
                   </div>
                 </div>
                 <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
@@ -52,7 +52,7 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
                       <strong>Error!</strong> <?php echo $this->session->flashdata('error'); ?>
                     </div>
                   <?php }?>
-                  <form class="form-horizontal form-simple" action="<?php echo base_url();?>loginadmin/auth" method="POST" novalidate>
+                  <form class="form-horizontal form-simple" action="<?php echo base_url();?>login/auth" method="POST" novalidate>
                     <fieldset class="form-group position-relative has-icon-left mb-0">
                       <input type="text" class="form-control form-control-lg" id="user-name" name="user_username" placeholder="Your Username"
                       required>

@@ -7,15 +7,16 @@
       </li>
 
       <li class="nav-item">
-        <a href="<?php echo base_url();?>admin"><i class="ft-home"></i>
+        <a href="<?php echo base_url();?>dashboard"><i class="ft-home"></i>
           <span class="menu-title" data-i18n="">Dashboard</span>
         </a>
       </li>
       <li class="nav-item">
-        <a href="<?php echo base_url()?>admin/slider"><i class="ft-sliders"></i>
-          <span class="menu-title" data-i18n="">Slider</span>
+        <a href="<?php echo base_url()?>d/booking"><i class="ft-sliders"></i>
+          <span class="menu-title" data-i18n="">Booking</span>
         </a>
       </li>
+      <!-- 
       <li class=" nav-item"><a href="#"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Kategori</span></a>
         <ul class="menu-content">
           <li class=""><a class="menu-item" href="<?php echo base_url();?>admin/kategori">Kategori</a></li>
@@ -51,7 +52,7 @@
         <a href="<?php echo base_url()?>admin/laporan"><i class="ft-printer"></i>
           <span class="menu-title" data-i18n="">Laporan</span>
         </a>
-      </li>
+      </li> -->
 
     </ul>
   </div>

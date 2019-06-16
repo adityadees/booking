@@ -4,98 +4,47 @@ class Login extends CI_Controller{
         parent:: __construct();
         $this->load->model('Mymod');
     }
-    function auth(){
-        $user_username=strip_tags(str_replace("'", "", $this->input->post('username',TRUE)));
-        $user_password=strip_tags(str_replace("'", "", $this->input->post('password',TRUE)));
-        $user_role='customer';
-        $table='user';
-
-        $where= [
-            'user_username'=>$user_username,
-            'user_password'=>md5($user_password),
-            'user_role'=>$user_role
-        ];
-
-        $cekuser=$this->Mymod->CekDataRows($table,$where);
-        if($cekuser->num_rows() > 0){
-            $xcekuser=$cekuser->row_array();
-            $newdata = [
-                'user_username'   => $xcekuser['user_username'],
-                'user_role'   => $xcekuser['user_role'],
-                'user_nama'   => $xcekuser['user_nama'],
-                'user_id'   => $xcekuser['user_id'],
-                'logged_in_user' => TRUE
-            ];
-
-            $this->session->set_userdata($newdata);
-            $url=base_url();
-            $this->session->set_flashdata('successlogin', $newdata['user_nama']);
-            redirect($url); 
-        }else{
-            redirect('login/gagallogin'); 
-        }
+    function index(){
+        $this->load->view('backend/login');
     }
+    function auth(){
+        $user_username=strip_tags(str_replace("'", "", $this->input->post('user_username',TRUE)));
+        $user_password=strip_tags(str_replace("'", "", $this->input->post('user_password',TRUE)));
 
-    function register(){
-        $username=$this->input->post('username');
-        $password=$this->input->post('password');
-        $repassword=$this->input->post('repassword');
-        $nama=$this->input->post('nama');
-        $email=$this->input->post('email');
-        $tel=$this->input->post('tel');
-        $alamat=$this->input->post('alamat');
-        $jk=$this->input->post('jk');
-        $role='customer';
+        $cekuser = $this->Mymod->CekDataRows('user',['user_username' => $user_username])->num_rows();
+        if($cekuser==0){
+            $this->session->set_flashdata('error', 'Username atau password anda salah');
+            redirect('login');
+        } else {
 
-        $table='user';
-        $where='user_username';
-        $data=$username;
-        $cekuname=$this->Mymod->ViewNumRows($table,$where,$data);
+            $cadmin=$this->Mymod->cekadminlogin($user_username,$user_password);
+            if($cadmin->num_rows() > 0){
+                $xcadmin=$cadmin->row_array();
+                $newdata = array(
+                    'user_username'   => $xcadmin['user_username'],
+                    'user_role'   => $xcadmin['user_role'],
+                    'logged_in' => TRUE
+                );
 
-        if($cekuname==1){
-            $this->session->set_flashdata('error', 'Username telah dipakai, silahkan ulangi lagi');
-            redirect('Register'); 
-        }else{
-            if($password==$repassword){
-
-                if($jk=='on'){
-                    $jk='L';
-                }else {
-                    $jk='P';
-                }
-                $title='User';
-                $table='user';
-                $data=[
-                    'user_username'=>$username,
-                    'user_password'=>md5($password),
-                    'user_nama'=>$nama,
-                    'user_email'=>$email,
-                    'user_alamat'=>$alamat,
-                    'user_jk'=>$jk,
-                    'user_tel'=>$tel,
-                    'user_role'=>$role,
-                ];
-                $rd=$this->Mymod->InsertData($table,$data);
-                $this->session->set_flashdata('success', 'Berhasil menambah '.$title);
-                redirect('Register');     
-            }else {
-                $this->session->set_flashdata('error', 'Password tidak sama, silahkan diulangi lagi');
-                redirect('Register');     
+                $this->session->set_userdata($newdata);
+                redirect('dashboard'); 
+            }else{
+                $this->session->set_flashdata('error', 'Username atau password anda salah');
+                redirect('login'); 
             }
         }
 
+    }
 
-    }   
 
     function gagallogin(){
-        $url=base_url('Login');
-        $this->session->set_flashdata('error', 'Username atau password salah silahkan ulangi lagi');
-        redirect($url);
+        $this->session->set_flashdata('error', 'Username atau password anda salah');
+        redirect('login');
     }
 
     function logout(){
         $this->session->sess_destroy();
-        $url=base_url();
+        $url=base_url('dashboard');
         redirect($url);
     }
 }
