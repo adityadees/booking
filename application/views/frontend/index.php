@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Booking</title>
+  <title>Lan Service</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="robots" content="index, follow"/>
   <meta name="keywords" content=""/>
@@ -66,7 +66,7 @@
               <div class="half-circle"></div>
             </div>
             <div class="separator color-separator"></div>
-            <h3>Welcome to My Garage</h3>
+            <h3>Welcome to Lan Service</h3>
             <h4>Booking Service Online</h4>
           </div>
         </div>
