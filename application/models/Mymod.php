@@ -7,7 +7,6 @@ class Mymod extends CI_Model{
         $res=$this->db->query("SELECT * FROM user WHERE user_username='$user_username' AND user_password=md5('$user_password')");
         return $res;
     }
-
   
     public function ViewDetail($table,$where,$data){
         $this->db->select('*');
@@ -15,6 +14,13 @@ class Mymod extends CI_Model{
         $res = $this->db->get($table);
         return $res->row_array();
     }
+
+    public function ViewDataOrWhere($table,$where,$orwhere){
+        $this->db->where($where)->or_where($orwhere);
+        $res = $this->db->get($table);
+        return $res->row_array();
+    }
+
     public function ViewDataWhere($table,$where){
         $this->db->select('*');
         $res=$this->db->get_where($table,$where);

@@ -12,8 +12,8 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="<?php echo base_url()?>d/booking"><i class="ft-sliders"></i>
-          <span class="menu-title" data-i18n="">Booking</span>
+        <a href="<?php echo base_url()?>d/riwayat"><i class="ft-sliders"></i>
+          <span class="menu-title" data-i18n="">Riwayat</span>
         </a>
       </li>
       <!-- 

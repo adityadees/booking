@@ -12,20 +12,23 @@ class BackendC extends CI_Controller{
 
 	public function index()
 	{
+		$tgl =  Date('Y-m-d');
 		$y['title']='Dashboard';
+		$x['antrian_now'] = $this->db->query("SELECT booking_antrian from booking where booking_status='menunggu' OR booking_status='proses' and booking_tanggal='$tgl' order by booking_antrian  desc limit 1")->result();
+
 		$this->load->view('backend/layout/header',$y);
 		$this->load->view('backend/layout/topbar');
 		$this->load->view('backend/layout/sidebar');
-		$this->load->view('backend/index');
+		$this->load->view('backend/index',$x);
 		$this->load->view('backend/layout/footer');
 	}
-	public function booking()
+	public function riwayat()
 	{
-		$y['title']='Booking';
+		$y['title']='Riwayat';
 		$this->load->view('backend/layout/header',$y);
 		$this->load->view('backend/layout/topbar');
 		$this->load->view('backend/layout/sidebar');
-		$this->load->view('backend/booking/index');
+		$this->load->view('backend/riwayat/index');
 		$this->load->view('backend/layout/footer');
 	}
 

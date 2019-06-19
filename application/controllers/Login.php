@@ -22,6 +22,7 @@ class Login extends CI_Controller{
                 $xcadmin=$cadmin->row_array();
                 $newdata = array(
                     'user_username'   => $xcadmin['user_username'],
+                    'user_nama'   => $xcadmin['user_nama'],
                     'user_role'   => $xcadmin['user_role'],
                     'logged_in' => TRUE
                 );

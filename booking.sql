@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2019 at 07:34 PM
+-- Generation Time: Jun 19, 2019 at 10:21 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -29,10 +29,53 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `booking` (
-  `booking_kode` int(11) NOT NULL,
+  `booking_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `booking_antrian` int(11) NOT NULL,
   `booking_plat` varchar(9) NOT NULL,
-  `booking_kendaraan` enum('mobil','motor') NOT NULL
+  `booking_layanan` enum('service','sparepart') NOT NULL,
+  `booking_kendala` text NOT NULL,
+  `booking_status` enum('menunggu','proses','selesai','batal') NOT NULL DEFAULT 'menunggu',
+  `booking_eststart` datetime DEFAULT NULL,
+  `booking_estend` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`booking_id`, `user_id`, `booking_antrian`, `booking_plat`, `booking_layanan`, `booking_kendala`, `booking_status`, `booking_eststart`, `booking_estend`) VALUES
+(1, 10, 1, '22', 'service', 'asd', 'menunggu', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 10, 2, '22', 'service', 'asd', 'proses', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `montir`
+--
+
+CREATE TABLE `montir` (
+  `montir_id` int(11) NOT NULL,
+  `montir_nama` varchar(50) NOT NULL,
+  `montir_tel` char(12) NOT NULL,
+  `montir_alamat` text NOT NULL,
+  `montir_status` enum('aktif','nonaktif') NOT NULL,
+  `montir_foto` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaksi`
+--
+
+CREATE TABLE `transaksi` (
+  `transaksi_id` int(11) NOT NULL,
+  `booking_id` int(11) NOT NULL,
+  `montir_id` int(11) NOT NULL,
+  `transaksi_biaya` int(11) NOT NULL,
+  `transaksi_keterangan` text NOT NULL,
+  `transaksi_tanggal` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -68,7 +111,21 @@ INSERT INTO `user` (`user_id`, `user_nama`, `user_username`, `user_password`, `u
 -- Indexes for table `booking`
 --
 ALTER TABLE `booking`
-  ADD PRIMARY KEY (`booking_kode`);
+  ADD PRIMARY KEY (`booking_id`);
+
+--
+-- Indexes for table `montir`
+--
+ALTER TABLE `montir`
+  ADD PRIMARY KEY (`montir_id`);
+
+--
+-- Indexes for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  ADD PRIMARY KEY (`transaksi_id`),
+  ADD KEY `booking_id` (`booking_id`),
+  ADD KEY `montir_id` (`montir_id`);
 
 --
 -- Indexes for table `user`
@@ -81,10 +138,33 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `montir`
+--
+ALTER TABLE `montir`
+  MODIFY `montir_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  MODIFY `transaksi_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`booking_id`) REFERENCES `booking` (`booking_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `transaksi_ibfk_2` FOREIGN KEY (`montir_id`) REFERENCES `montir` (`montir_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
