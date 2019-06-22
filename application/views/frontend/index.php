@@ -43,7 +43,7 @@
                 <li><a href="#sec3">Booking</a></li>
                 <li><a href="#sec4">Contacts</a></li>
                 <li><a href="#sectes">Testimonial</a></li>
-                <li><a href="<?= base_url('login')?>">Login</a></li>
+                <li><a href="" onclick="window.location.href='<?= base_url('login')?>'">Login</a></li>
               </ul>
             </nav>
           </div>

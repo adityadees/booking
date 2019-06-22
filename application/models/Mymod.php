@@ -7,7 +7,7 @@ class Mymod extends CI_Model{
         $res=$this->db->query("SELECT * FROM user WHERE user_username='$user_username' AND user_password=md5('$user_password')");
         return $res;
     }
-  
+
     public function ViewDetail($table,$where,$data){
         $this->db->select('*');
         $this->db->where($where,$data);
@@ -30,6 +30,19 @@ class Mymod extends CI_Model{
         $res=$this->db->get($table);
         return $res->result();
     }
+    public function get_last_row($table, $cond = '', $order_by = null)
+    {
+        if (is_array($cond))
+            $this->db->where($cond);
+        if (is_string($cond) && strlen($cond) > 3)
+            $this->db->where($cond);
+        if ($order_by != null)
+            $this->db->order_by($order_by, 'DESC');
+        $this->db->limit(1);
+        $query = $this->db->get($table);
+
+        return $query->row();
+    }   
 
     public function data($table,$number,$offset){
         return $query = $this->db->get('produk',$number,$offset)->result_array();      
@@ -86,10 +99,6 @@ class Mymod extends CI_Model{
         return $res;
     }
 
-    public function chartindex(){
-        $res = $this->db->query("SELECT sum(pemesanan_total) as sumtot, COUNT(*) as coall, pemesanan_tanggal from pemesanan where pemesanan_status='selesai' GROUP by month(pemesanan_tanggal)");
-        return $res->result_array();
-    }
     public function GetDataJoinlimit($table,$where){
         $i=1;
         foreach($table as $table_name=>$table_id){ 
@@ -104,11 +113,6 @@ class Mymod extends CI_Model{
         $this->db->where($where);
         $this->db->limit('4');
         $res = $this->db->get();
-        return $res;
-    }
-
-    public function best_seller(){
-        $res = $this->db->query("SELECT produk_kode,count(produk_kode) as jumlah from pemesanan_detailp  GROUP by produk_kode order by jumlah desc");
         return $res;
     }
 
@@ -132,54 +136,7 @@ class Mymod extends CI_Model{
         $res = $this->db->get();
         return $res;
     }
-
-
-    public function joinsubkat($kode){
-        $this->db->select('*');
-        $this->db->from('sub_kategori');
-        $this->db->join ( 'produk', 'produk.sk_id = sub_kategori.sk_id' , 'inner' );
-        $this->db->where ( 'sub_kategori.sk_id', $kode );
-        $res = $this->db->get();
-        return $res;
-    }
-
-    
-    public function countkat($kat){
-        $res = $this->db->query("SELECT
-            kategori.kategori_id,
-            COUNT(produk.produk_kode) AS Total
-            FROM
-            kategori
-            LEFT JOIN sub_kategori on kategori.kategori_id=sub_kategori.kategori_id
-            LEFT JOIN produk on produk.sk_id=sub_kategori.sk_id
-            WHERE kategori.kategori_id=$kat
-            GROUP BY kategori.kategori_id");
-        return $res;
-    }
-
-
-    public function joinkat($kode){
-        $this->db->select('*');
-        $this->db->from('kategori');
-        $this->db->join ( 'sub_kategori', 'kategori.kategori_id = sub_kategori.kategori_id' , 'inner' );
-        $this->db->join ( 'produk', 'produk.sk_id = sub_kategori.sk_id' , 'inner' );
-        $this->db->where ( 'kategori.kategori_id', $kode );
-        $this->db->order_by('rand()');
-        $res = $this->db->get();
-        return $res;
-    }
-    public function related($where){
-        $this->db->select('*');
-        $this->db->from('produk');
-        $this->db->join ( 'sub_kategori', 'produk.sk_id = sub_kategori.sk_id' , 'left' );
-        $this->db->join ( 'kategori', 'kategori.kategori_id = sub_kategori.kategori_id' , 'left' );
-        $this->db->where($where);
-        $this->db->order_by('rand()');
-        $res = $this->db->get();
-        return $res;
-    }
-
-    public function GetDataJoinNW($table){
+    public function GetDataJoinNW($table,$type){
         $i=1;
         foreach($table as $table_name=>$table_id){ 
             ${'table'.$i}=$table_name;
@@ -189,48 +146,73 @@ class Mymod extends CI_Model{
 
         $this->db->select('*');
         $this->db->from(''.$table1.' t1');
-        $this->db->join(''.$table2.' t2','t1.'.$t1id.'=t2.'.$t2id);
+        $this->db->join(''.$table2.' t2','t1.'.$t1id.'=t2.'.$t2id,$type);
         $res = $this->db->get();
+        return $res->result();
+    }
+
+
+    public function get_antrian_num($tgl,$where){
+        if($where == ''){
+            $res = $this->db->query("SELECT * from booking where (booking_tanggal IN ('$tgl')) and (booking_status='menunggu' OR booking_status='proses')  order by booking_antrian  desc limit 1")->result();   
+        } else {
+            $res = $this->db->query("SELECT * from booking where (booking_tanggal IN ('$tgl')) and (booking_status='menunggu' OR booking_status='proses') and (user_id = '$where')  order by booking_antrian  desc limit 1")->result();
+        }
         return $res;
     }
 
-    public function getProdukNotParent($produk_kode){
-        $this->db->select('*');
-        $this->db->from('produk');
-        $this->db->where('produk_kode !=',$produk_kode);
-        $res = $this->db->get();
+    public function antrian($tgl)
+    {
+        $res = $this->db->query("SELECT * from booking left join user on booking.user_id=user.user_id where (booking.booking_tanggal IN ('$tgl')) and (booking.booking_status='menunggu' OR booking.booking_status='proses')  order by booking.booking_antrian  asc")->result();   
         return $res;
     }
-    public function JoinPesan(){
-        $this->db->select('*');
-        $this->db->from('pemesanan');
-        $this->db->join ( 'pembayaran', 'pemesanan.pemesanan_kode = pembayaran.pemesanan_kode' , 'left' );
-        $this->db->join ( 'user', 'pemesanan.user_id = user.user_id' , 'left' );
-        $res = $this->db->get();
+
+    public function antrian_last($tgl)
+    {
+        $res = $this->db->query("SELECT MAX(booking_antrian) as max_num FROM booking inner join pickup on booking.booking_kode=pickup.booking_kode where booking.booking_tanggal='$tgl'")->result();   
         return $res;
     }
-    public function JoinBayar(){
-        $this->db->select('*');
-        $this->db->from('pemesanan');
-        $this->db->join ( 'pembayaran', 'pemesanan.pemesanan_kode = pembayaran.pemesanan_kode' , 'inner' );
-        $this->db->join ( 'user', 'pemesanan.user_id = user.user_id' , 'inner' );
-        $this->db->where ( 'pembayaran.pembayaran_status', 'selesai' );
-        $res = $this->db->get();
+
+
+    public function getpick()
+    {
+        $res = $this->db->query("SELECT * FROM `pickup` ORDER BY `pickup`.`pickup_est_selesai` DESC limit 1")->result();
         return $res;
     }
-/*
-
-
-    public function joinlist($kode){
-        $this->db->select('*');
-        $this->db->from('list');
-        $this->db->join ( 'produk', 'produk.list_id = list.list_id' , 'inner' );
-        $this->db->where ( 'list.list_id', $kode );
-        $res = $this->db->get();
+    public function recent($uid)
+    {
+        $res = $this->db->query("SELECT * from booking 
+            LEFT JOIN transaksi ON
+            booking.booking_kode=transaksi.booking_kode
+            where 
+            (booking.user_id IN ('$uid')) 
+            and 
+            (booking.booking_status='selesai' OR booking.booking_status='batal')  
+            order by booking.booking_antrian  desc limit 5")->result();
         return $res;
     }
-*/
+    public function history($uid)
+    {
+        if ($uid == '') {
+            $res = $this->db->query("SELECT * from transaksi 
+                right JOIN booking ON
+                booking.booking_kode=transaksi.booking_kode
+                where 
+                (booking.booking_status='selesai' OR booking.booking_status='batal')  
+                order by booking.booking_antrian  desc")->result();
 
+            return $res;
+        } else {
+            $res = $this->db->query("SELECT * from transaksi 
+                right JOIN booking ON
+                booking.booking_kode=transaksi.booking_kode
+                where 
+                (booking.user_id IN ('$uid')) 
+                and 
+                (booking.booking_status='selesai' OR booking.booking_status='batal')  
+                order by booking.booking_antrian  desc")->result();
+            return $res;
+        }
 
-
+    }
 }

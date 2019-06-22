@@ -74,8 +74,6 @@
 <script src="<?php echo base_url();?>assets/backend/js/scripts/forms/switch.min.js" type="text/javascript"></script>
 
 <script src="<?php echo base_url();?>assets/backend/vendors/js/ui/prism.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url();?>assets/backend/vendors/js/extensions/dropzone.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url();?>assets/backend/js/scripts/extensions/dropzone.min.js" type="text/javascript"></script>
 
 </body>
 </html>
