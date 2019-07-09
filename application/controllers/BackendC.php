@@ -19,6 +19,7 @@ class BackendC extends CI_Controller{
 			$x['antrian_list'] = $this->Mymod->antrian(date('Y-m-d'));
 			$x['antrian_anda'] = $this->Mymod->get_antrian_num(date('Y-m-d'),$this->data['uid']);
 			$x['antrian_now'] = $this->Mymod->antrian_last(date('Y-m-d'));
+			$x['rincian'] = $this->Mymod->get('rincian');
 		} else {
 			$x['antrian_now'] = $this->Mymod->antrian_last(date('Y-m-d'));
 			$x['antrian_anda'] = $this->Mymod->get_antrian_num(date('Y-m-d'),$this->data['uid']);
@@ -52,6 +53,17 @@ class BackendC extends CI_Controller{
 		$this->load->view('backend/layout/footer');
 	}
 
+	public function perbaikan()
+	{
+		$y['title']='Perbaikan';
+		$x['rincian'] = $this->Mymod->get('rincian');
+		$this->load->view('backend/layout/header',$y);
+		$this->load->view('backend/layout/topbar');
+		$this->load->view('backend/layout/sidebar');
+		$this->load->view('backend/perbaikan/perbaikan',$x);
+		$this->load->view('backend/layout/footer');
+	}
+
 	public function riwayat_detail()
 	{
 		$y['title']='Riwayat';
@@ -67,6 +79,7 @@ class BackendC extends CI_Controller{
 		$data = $this->Mymod->GetDataJoinArr($jtable,$where);
 		$y['title']='Invoice';
 		$x['data'] = $data->row_array();
+		$x['rincian'] = $this->Mymod->get('rincian');
 
 		$this->load->view('backend/layout/header',$y);
 		$this->load->view('backend/history/history_detail',$x);
@@ -105,6 +118,8 @@ class BackendC extends CI_Controller{
 			$plat = $this->input->post('plat');
 			$layanan = $this->input->post('layanan');
 			$kendala = $this->input->post('kendala');
+			$merek = $this->input->post('merek');
+			$tipeken = $this->input->post('tipeken');
 
 			if($layanan == 'service'){
 				$jenis = 'SC';
@@ -123,6 +138,8 @@ class BackendC extends CI_Controller{
 				'booking_antrian'	=> $antrian,
 				'booking_layanan'	=> $layanan,
 				'booking_kendala'	=> $kendala,
+				'booking_merek'	=> $merek,
+				'booking_tipe'	=> $tipeken,
 				'booking_tanggal'	=> date('Y-m-d')
 			];
 
@@ -175,7 +192,9 @@ class BackendC extends CI_Controller{
 	public function konfirmasi_selesai(){
 		$kode = $this->input->post('kode');
 		$biaya = $this->input->post('biaya');
+		$keterangan = $this->input->post('keterangan');
 		$rincian = $this->input->post('rincian');
+		$imrinci =implode(',',$rincian); 
 		$q = $this->Mymod->ViewDataWhere('pickup',['booking_kode' => $kode]);
 		$montir_id = $q[0]->montir_id; 
 		$pickup_id = $q[0]->pickup_id; 
@@ -183,7 +202,8 @@ class BackendC extends CI_Controller{
 			'booking_kode'	=> $kode,
 			'montir_id'	=> $montir_id,
 			'transaksi_biaya'	=> $biaya,
-			'transaksi_keterangan'	=> $rincian,
+			'transaksi_keterangan'	=> $keterangan,
+			'transaksi_rincian'	=> $imrinci,
 			'transaksi_tanggal'	=> date('Y-m-d H:i:s'),
 		];
 		$q = $this->Mymod->InsertData('transaksi',$data);

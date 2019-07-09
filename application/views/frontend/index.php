@@ -42,7 +42,7 @@
                 <li><a href="#sec2">About</a></li>
                 <li><a href="#sec3">Booking</a></li>
                 <li><a href="#sec4">Contacts</a></li>
-                <li><a href="#sectes">Testimonial</a></li>
+                <li><a href="#sectes">Commitment</a></li>
                 <li><a href="" onclick="window.location.href='<?= base_url('login')?>'">Login</a></li>
               </ul>
             </nav>
@@ -67,7 +67,7 @@
             </div>
             <div class="separator color-separator"></div>
             <h3>Welcome to Lan Service</h3>
-            <h4>Booking Service Online</h4>
+            <h4>trusted motorcycle repair since 1997</h4>
           </div>
         </div>
         <div class="hero-link">
@@ -84,7 +84,7 @@
                   <h4 class="decor-title">Layanan Kami</h4>
                   <div class="separator color-separator"></div>
                 </div>
-                <p>Kami merupakan bengkel yang telah berdiri sejak lama, melayani jasa service sparepart semua jenis kendaraan.</p>
+                <p>Kami merupakan bengkel yang telah berdiri sejak tahun 1997, melayani jasa service motor dan penjualan sparepart berbagai merk kendaraan motor.</p>
                 <p> Saat ini kami menyediakan layanan booking online sehingga anda tidak perlu menunggu lama di tempat kami. Anda dapat membooking dari jarak jauh sehingga dapat mengoptimalkan waktu kerja anda.</p>
               </div>
               <div class="col-md-6">
@@ -124,25 +124,31 @@
             </div>
             <div class="work-time">
               <div class="row">
-                <div class="col-md-6">
-                  <h3>Sening - Jumat</h3>
+                <div class="col-md-4">
+                  <h3>Senin - kamis</h3>
                   <div class="hours">
                     08:00<br>
                     17:00
                   </div>
                 </div>
-                <div class="col-md-6">
+                  <div class="col-md-4">
+                  <h3>Jumat</h3>
+                  <div class="hours">
+                    TUTUP<br>
+                  </div>
+                </div>
+                <div class="col-md-4">
                   <h3>Sabtu - Minggu</h3>
                   <div class="hours">
-                    09:00<br>
-                    15:00
+                    08:00<br>
+                    17:30
                   </div>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
-                <div class="big-number"><a href="#">(+62)823-7137-3347</a></div>
+                <div class="big-number"><a href="#">(+62)8117872822</a></div>
               </div>
             </div>
           </div>
@@ -266,19 +272,11 @@
               </div>
               <div class="col-md-3">
                 <div class="contact-details">
-                  <h4>Kenten  - Palembang</h4>
+                  <h4>Plaju - Palembang</h4>
                   <ul>
                     <li><a href="#">Palembang, Sumatera selatan</a></li>
-                    <li><a href="#">(+62) 82371373347</a></li>
-                    <li><a href="#">adityads@ymail.com</a></li>
-                  </ul>
-                </div>
-                <div class="contact-details">
-                  <h4>Timbangan - Indralaya</h4>
-                  <ul>
-                    <li><a href="#">Indralaya - OKI</a></li>
-                    <li><a href="#">(+62) 82371373347</a></li>
-                    <li><a href="#">adityads@ymail.com</a></li>
+                    <li><a href="#">(+62) 8117872822</a></li>
+                    <li><a href="#">meirizkyaa@gmail.com</a></li>
                   </ul>
                 </div>
               </div>
@@ -307,8 +305,8 @@
           <div class="bg bg-parallax" style="background-image:url(<?= base_url()?>assets/frontend/images/bg/asaz.jpg)" data-top-bottom="transform: translateY(300px);" data-bottom-top="transform: translateY(-300px);"></div>
           <div class="overlay"></div>
           <div class="container">
-            <h2>Testimonials</h2>
-            <h3>What said about us</h3>
+            <h2>commitment</h2>
+            <h3>We will always keep committed</h3>
             <div class="bold-separator">
               <span></span>
             </div>
@@ -328,8 +326,53 @@
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
                       </ul>
-                      <p>" Service yang memuaskan, cepat dan ahli dalam bidangnya "</p>
-                      <h4><a href="https://twitter.com/adityadees" target="_blank">AdityaDees</a></h4>
+                      <p>" Menjalin hubungan baik pada bidang bisnis dan sosial dengan konsumen"</p>
+                      <h4><a href="meirizkyalrf" target="_blank">Lanika</a></h4>
+                    </div>
+                    <div class="item">
+                      <ul>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                      </ul>
+                      <p>" Memprioritaskan kepuasan konsumen "</p>
+                      <h4><a href="meirizkyalrf" target="_blank">Lanika</a></h4>
+                    </div>
+                    <div class="item">
+                      <ul>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                      </ul>
+                      <p>" Memberikan solusi terbaik pada setiap permasalahan yang  ditemui pada kendaraan yang sedang diperbaiki"</p>
+                      <h4><a href="meirizkyalrf" target="_blank">Lanika</a></h4>
+                    </div>
+                     <div class="item">
+                      <ul>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                      </ul>
+                      <p>" Profesionalitas tenaga kerja "</p>
+                      <h4><a href="meirizkyalrf" target="_blank">Lanika</a></h4>
+                    </div>
+                    </div>
+                     <div class="item">
+                      <ul>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                      </ul>
+                      <p>" Mengikuti perkembangan ilmu dan teknologi untuk diimplementasikan dengan cara yang benar "</p>
+                      <h4><a href="meirizkyalrf" target="_blank">Lanika</a></h4>
                     </div>
                   </div>
                 </div>
@@ -349,7 +392,7 @@
                   <ul>
                     <li><a href="#" target="_blank" ><i class="fa fa-facebook"></i></a></li>
                     <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#" target="_blank" ><i class="fa fa-instagram"></i></a></li>
+                    <li><a href="https://www.instagram.com/meirizkyalrf" target="_blank" ><i class="fa fa-instagram"></i></a></li>
                     <li><a href="#" target="_blank" ><i class="fa fa-pinterest"></i></a></li>
                     <li><a href="#" target="_blank" ><i class="fa fa-tumblr"></i></a></li>
                   </ul>
@@ -360,15 +403,15 @@
               <span></span>
             </div>
             <ul class="footer-contacts">
-              <li><a href="#">(+62) 82371373347</a></li>
+              <li><a href="#">(+62) 8117872822</a></li>
               <li><a href="#">Palembang, Sumatera Selatan</a></li>
-              <li><a href="#">adityads@ymail.com</a></li>
+              <li><a href="#">meirizkyaa@gmail.com</a></li>
             </ul>
           </div>
         </div>
         <div class="to-top-holder">
           <div class="container">
-            <p> <span> &#169; AdityaDS 2019 . </span> All rights reserved.</p>
+            <p> <span> &#169; Lanika 2019 . </span> All rights reserved.</p>
             <div class="to-top"><span>Back To Top </span><i class="fa fa-angle-double-up"></i></div>
           </div>
         </div>

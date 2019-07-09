@@ -73,7 +73,7 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
               </div>
               <div class="card-footer">
                 <div class="">
-                  <p class="text-center m-0">&copy; 2018<br></a></p>
+                  <p class="text-center m-0">&copy; 2019<br></a></p>
                 </div>
               </div>
             </div>

@@ -11,6 +11,13 @@
           <span class="menu-title" data-i18n="">Dashboard</span>
         </a>
       </li>
+<?php if($_SESSION['user_role'] == 'admin') :?>
+      <li class="nav-item">
+        <a href="<?php echo base_url();?>d/perbaikan"><i class="fa fa-gear"></i>
+          <span class="menu-title" data-i18n="">Perbaikan</span>
+        </a>
+      </li>
+<?php endif; ?>
       <li class="nav-item">
         <a href="<?php echo base_url()?>d/riwayat"><i class="ft-sliders"></i>
           <span class="menu-title" data-i18n="">Riwayat</span>

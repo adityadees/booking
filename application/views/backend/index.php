@@ -46,6 +46,7 @@
                     <?php } else { ?>
                       <i class="fa fa-thumb-tack"></i>
                       <h5>Nomor Antrian anda <b><?= $antrian_anda[0]->booking_antrian ?></b></h5>
+                      <h5><b><?= $antrian_anda[0]->booking_kode ?></b></h5>
                       <button class="btn btn-danger" data-toggle="modal" data-target="#konfirmasi_batal" onclick="$('#batalkd').val('<?= $antrian_anda[0]->booking_kode ?>')" <?php if($antrian_anda[0]->booking_status=='proses') {echo "disabled";}?>>Batalkan</button>
                     <?php } ?>
                   </div>
@@ -362,20 +363,35 @@
           </div>
           <form class="form" action="<?= base_url('backendc/konfirmasi_selesai')?>" method="POST">
             <div class="modal-body">
-              <div class="form-body">
-                <div class="form-group">
-                  <label for="kode">Kode</label>
-                  <input type="text" id="kodebook" class="form-control" name="kode" readonly="">
-                </div>
+              <div class="row">
+                <div class="col-md-12">
 
-                <div class="form-group">
-                  <label for="biaya">Biaya</label>
-                  <input type="text" id="biaya" class="form-control" placeholder="Biaya" name="biaya"  data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Biaya Perbaikan / Pembelian">
-                </div>
+                  <div class="form-body">
+                    <div class="form-group">
+                      <label for="kode">Kode</label>
+                      <input type="text" id="kodebook" class="form-control" name="kode" readonly="">
+                    </div>
 
-                <div class="form-group">
-                  <label for="rincian">Rincian</label>
-                  <textarea id="rincian" rows="5" class="form-control" name="rincian" placeholder="Rincian total biaya yang dikeluarkan"></textarea>
+
+                    <div class="form-group">
+                      <p>Rincian</p>
+                      <select class="select2 form-control" multiple="multiple" style="width: 100%" name="rincian[]">
+                        <?php foreach($rincian as $pb ) :?>
+                          <option value="<?= $pb->rincian_id ?>"><?= $pb->rincian_nama ." | Rp. ". number_format($pb->rincian_harga) ?></option>
+                        <?php endforeach; ?>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="biaya">Total Biaya</label>
+                      <input type="text" id="biaya" class="form-control" placeholder="Total Biaya Perbaikan" name="biaya"  data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Biaya Perbaikan / Pembelian">
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="rincian">keterangan</label>
+                      <textarea id="keterangan" rows="5" class="form-control" name="keterangan" placeholder="keterangan total biaya yang dikeluarkan"></textarea>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -405,6 +421,19 @@
                   <input type="text" id="nama" class="form-control" placeholder="Nama" name="nama" value="<?= $_SESSION['user_nama']; ?>" readonly data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Nama">
                 </div>
 
+                <div class="form-group">
+                  <label for="jeniskendaraan">Merk Kendaraan</label>
+                  <select class="form-control" name="merek">
+                    <option value="yamaha">Yamaha</option>
+                    <option value="honda">Honda</option>
+                    <option value="suzuki">Suzuki</option>
+                    <option value="kawasaki">Kawasaki</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="tipekendaraan">Tipe Kendaraan</label>
+                  <input type="text" id="tipekendaraan" class="form-control" placeholder="ex(Mio, beat, supra 125, vixion)" name="tipeken"  data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Tipe Kendaraan">
+                </div>
                 <div class="form-group">
                   <label for="platnomor">Plat Nomor</label>
                   <input type="text" id="platnomor" class="form-control" placeholder="Plat Nomor" name="plat"  data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Plat Nomor">

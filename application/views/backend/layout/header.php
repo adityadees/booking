@@ -9,6 +9,7 @@
   <link rel="shortcut icon" href="<?= base_url();?>assets/images/logo/favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/backend/css/core/menu/menu-types/vertical-menu-modern.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/backend/vendors/css/forms/selects/select2.min.css">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/backend/css/vendors.css">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/backend/vendors/css/extensions/unslider.css">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/backend/vendors/css/weather-icons/climacons.min.css">
@@ -32,6 +33,6 @@
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/core/menu/menu-types/vertical-menu-modern.css">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/plugins/forms/switch.min.css">
 -->
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/backend/assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/backend/assets/css/style.css">
 </head>
 <body class="vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">

@@ -55,6 +55,7 @@ $route['register']='FrontendC/register/';
 $route['Logout']='Login/logout/';
 $route['logout']='login/logout';
 $route['dashboard']='BackendC';
+$route['d/perbaikan']='BackendC/perbaikan';
 $route['d/riwayat']='BackendC/riwayat';
 $route['d/riwayat/(:any)']='BackendC/riwayat_detail/$1';
 $route['default_controller'] = 'FrontendC';

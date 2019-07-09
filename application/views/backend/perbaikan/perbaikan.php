@@ -24,23 +24,22 @@
 									<table class="table table-striped table-bordered zero-configuration">
 										<thead>
 											<tr>
-												<th>Kode</th>
-												<th>Plat Nomor</th>
-												<th>Layanan</th>
-												<th class="text-center">Biaya</th>
-												<th>Tanggal</th>
-												<th class="text-center">Status</th>
+												<th>No</th>
+												<th>Jenis</th>
+												<th>Harga</th>
+												<th class="text-center">Aksi</th>
 											</tr>
 										</thead>
 										<tbody>
-											<?php foreach($history as $hs):?>
+											<?php $no=0; foreach($rincian as $pb): $no++;?>
 												<tr>
-													<td class="text-truncate"><a href="<?= base_url('d/riwayat/'.$hs->booking_kode)?>"><?= $hs->booking_kode ?></a></td>
-													<td class="text-truncate"><?= $hs->booking_plat ?></td>
-													<td class="text-truncate"><?= $hs->booking_layanan ?></td>
-													<td class="text-truncate text-center"><?php if(isset($hs->transaksi_biaya)){echo "Rp ".number_format($hs->transaksi_biaya);} else {echo "-";} ?></td>
-													<td class="text-truncate"><?= date('d-m-Y',strtotime($hs->booking_tanggal)) ?></td>
-													<td class="text-truncate text-center"><span class="badge <?php if($hs->booking_status=='batal'){echo 'badge-danger';} else {echo 'badge-success';}?>"><?= ucfirst($hs->booking_status) ?></span></td>
+													<td><?= $no; ?></td>
+													<td><?= $pb->rincian_nama?></td>
+													<td><?= $pb->rincian_harga?></td>
+													<td class="text-center">
+														<button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
+														<button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+													</td>
 												</tr>
 											<?php endforeach; ?>
 										</tbody>

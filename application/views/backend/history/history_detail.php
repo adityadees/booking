@@ -1,4 +1,4 @@
-<body onload="myFunction()">
+ <body onload="myFunction()">
     <div class="content-body">
         <section class="card">
             <div id="invoice-template" class="card-body">
@@ -10,8 +10,8 @@
                                 <div class="media-body">
                                     <ul class="ml-2 px-0 list-unstyled">
                                         <li class="text-bold-800">LAN SERVICE</li>
-                                        <li>Jl. Ilir Bar. I, Kota Palembang, Sumatera Selatan 30137</li>
-                                        <li>(+62) 823-7137-3347</li>
+                                        <li>Jl. A. Yani Simpang 3 16 Ulu, Sumatera Selatan 30265</li>
+                                        <li>(+62) 811-7872-822</li>
                                     </ul>
                                 </div>
                             </div>
@@ -39,14 +39,51 @@
                                 <li>Total Biaya</li>
                                 <li class="lead text-bold-800">Rp. <?= number_format($data['transaksi_biaya']);?></li>
                             </ul>
-                        </div>
-                        <div class="col-md-6">
+
+
                             <ul class="px-0 list-unstyled">
-                                <li class="lead text-bold-800">Rincian Perbaikan</li>
+                                <li class="lead text-bold-800">Keterangan</li>
                                 <li class="">
                                     <?= $data['transaksi_keterangan'];?>
                                 </li>
                             </ul>
+                        </div>
+
+                        <div class="col-md-6">
+                            <table width="100%" class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Rincian</th>
+                                        <th>Harga</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php 
+                                    $ttl = 0;
+                                    $x = explode(',', $data['transaksi_rincian']);
+                                    foreach ($x as $key)  : 
+                                        foreach ($rincian as $keyz => $va) : 
+                                            if($va->rincian_id == $key){
+                                                $ttl += $va->rincian_harga;
+                                                ?>
+                                                <tr>
+                                                    <td><?= $va->rincian_nama ?></td>
+                                                    <td><?= "Rp. ".number_format($va->rincian_harga) ?></td>
+                                                </tr>
+                                                <?php
+                                            }
+                                        endforeach; 
+                                    endforeach; 
+                                    ?>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td class="text-right"><b>Total</b></td>
+                                        <td><?= "Rp. ".number_format($ttl); ?></td>
+                                    </tr>
+                                </tfoot>
+
+                            </table>
                         </div>
                     </div>
                 </div>

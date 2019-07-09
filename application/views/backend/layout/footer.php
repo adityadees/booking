@@ -51,15 +51,8 @@
 <script src="<?php echo base_url();?>assets/backend/js/core/app-menu.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/backend/js/core/app.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/backend/js/scripts/customizer.js" type="text/javascript"></script>
-  <!--
-  <script src="<?php echo base_url();?>assets/backend/js/scripts/pages/dashboard-ecommerce.js" type="text/javascript"></script>
-    <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAogXD-AHrsmnWinZIyhRORJ84bgLwDPpg&callback=initMap">
-</script>
-
-  <script src="<?php echo base_url();?>assets/backend/js/scripts/forms/wizard-steps.js" type="text/javascript"></script>
-  <script src="<?php echo base_url();?>assets/backend/js/extensions/jquery.steps.min.js" type="text/javascript"></script>
--->
+<script src="<?php echo base_url();?>assets/backend/vendors/js/forms/select/select2.full.min.js"></script>
+<script src="<?php echo base_url();?>assets/backend/js/scripts/forms/select/form-select2.min.js"></script>
 <script src="<?php echo base_url();?>assets/backend/js/scripts/tables/datatables/datatable-basic.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/backend/vendors/js/tables/datatable/datatables.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/backend/js/scripts/extensions/sweet-alerts.js" type="text/javascript"></script>

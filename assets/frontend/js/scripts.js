@@ -278,8 +278,8 @@ function initLambert() {
         marker: {
 			// markers and locations------------------
             values: [ {
-                latLng: [ -2.982607, 104.732407 ],
-                data: "Palembang  - Sumatera Selatan",
+                latLng: [ -2.989938, 104.792643 ],
+                data: "Bengkel Lan Service  - Sumatera Selatan",
                 options: {
                     icon: "images/marker.png"
                 }
