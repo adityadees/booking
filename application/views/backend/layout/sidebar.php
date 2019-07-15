@@ -6,61 +6,23 @@
         data-original-title="General"></i>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item <?php if($title=='Dashboard') {echo "active";}?>">
         <a href="<?php echo base_url();?>dashboard"><i class="ft-home"></i>
           <span class="menu-title" data-i18n="">Dashboard</span>
         </a>
       </li>
-<?php if($_SESSION['user_role'] == 'admin') :?>
-      <li class="nav-item">
-        <a href="<?php echo base_url();?>d/perbaikan"><i class="fa fa-gear"></i>
-          <span class="menu-title" data-i18n="">Perbaikan</span>
-        </a>
-      </li>
-<?php endif; ?>
-      <li class="nav-item">
+      <?php if($_SESSION['user_role'] == 'admin') :?>
+      <li class="nav-item <?php if($title=='Perbaikan') {echo "active";}?>">
+          <a href="<?php echo base_url();?>d/perbaikan"><i class="fa fa-gear"></i>
+            <span class="menu-title" data-i18n="">Perbaikan</span>
+          </a>
+        </li>
+      <?php endif; ?>
+      <li class="nav-item <?php if($title=='Riwayat') {echo "active";}?>">
         <a href="<?php echo base_url()?>d/riwayat"><i class="ft-sliders"></i>
           <span class="menu-title" data-i18n="">Riwayat</span>
         </a>
       </li>
-      <!-- 
-      <li class=" nav-item"><a href="#"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Kategori</span></a>
-        <ul class="menu-content">
-          <li class=""><a class="menu-item" href="<?php echo base_url();?>admin/kategori">Kategori</a></li>
-          <li class=""><a class="menu-item" href="<?php echo base_url();?>admin/subkategori">Sub-Kategori</a></li>
-        </ul>
-      </li>
-      <li class=" nav-item"><a href="#"><i class="ft-package"></i><span class="menu-title" data-i18n="">Produk</span></a>
-        <ul class="menu-content">
-          <li class=""><a class="menu-item" href="<?php echo base_url();?>admin/produk">Data Produk</a></li>
-          <li class=""><a class="menu-item" href="<?php echo base_url();?>admin/promo">Promo</a></li>
-        </ul>
-      </li>
-
-
-      <li class=" nav-item"><a href="#"><i class="ft-shopping-cart"></i><span class="menu-title" data-i18n="">Transaksi</span></a>
-        <ul class="menu-content">
-          <li class=""><a class="menu-item" href="<?php echo base_url();?>admin/pemesanan">Pembelian</a></li>
-          <li class=""><a class="menu-item" href="<?php echo base_url();?>admin/pembayaran">Pembayaran</a></li>
-        </ul>
-      </li>
-      
-      <li class="nav-item">
-        <a href="<?php echo base_url()?>admin/rekening"><i class="ft-credit-card"></i>
-          <span class="menu-title" data-i18n="">Rekening</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="<?php echo base_url()?>admin/user"><i class="ft-user"></i>
-          <span class="menu-title" data-i18n="">User</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="<?php echo base_url()?>admin/laporan"><i class="ft-printer"></i>
-          <span class="menu-title" data-i18n="">Laporan</span>
-        </a>
-      </li> -->
-
     </ul>
   </div>
 </div>

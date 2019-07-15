@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2019 at 08:32 PM
+-- Generation Time: Jul 15, 2019 at 10:39 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -49,14 +49,14 @@ INSERT INTO `booking` (`booking_kode`, `user_id`, `booking_antrian`, `booking_me
 ('SC1017131561159094', 13, 3, 'yamaha', '', '', 'service', 'asd', 'selesai', '2019-06-22'),
 ('SC2601171561737425', 17, 3, 'yamaha', '', 'BG 2456 F', 'service', 'Ganti oli  mesin', 'selesai', '2019-06-28'),
 ('SC26151561954590', 15, 6, 'yamaha', '', '1111Rw', 'service', 'servis bulanan', 'selesai', '2019-07-01'),
-('SC2707151562044287', 15, 6, 'yamaha', '', 'BG 1616 U', 'service', 'Mogok', 'menunggu', '2019-07-02'),
+('SC2707151562044287', 15, 6, 'yamaha', '', 'BG 1616 U', 'service', 'Mogok', 'batal', '2019-07-02'),
 ('SC290101561159042', 10, 1, 'yamaha', '', 'BG123', 'service', 'assd', 'selesai', '2019-06-22'),
 ('SC2978151561725037', 15, 1, 'yamaha', '', 'bg1111ir', 'service', 'mogok', 'selesai', '2019-06-28'),
-('SC3415151561955064', 15, 7, 'yamaha', '', '1111', 'service', '10', 'menunggu', '2019-07-01'),
+('SC3415151561955064', 15, 7, 'yamaha', '', '1111', 'service', '10', 'batal', '2019-07-01'),
 ('SC5269161561942592', 16, 2, 'yamaha', '', 'BG 1817 Z', 'service', 'service rutin bulanan', 'selesai', '2019-07-01'),
 ('SC5585111561162192', 11, 4, 'yamaha', '', 'BG123xc', 'service', 'asds', 'batal', '2019-06-22'),
 ('SC860171562043291', 17, 2, 'yamaha', '', 'BG 131 LA', 'service', 'Ganti Oli', 'batal', '2019-07-02'),
-('SC9016151562589078', 15, 1, 'yamaha', '', 'BG223D', 'service', 'asds', 'proses', '2019-07-08'),
+('SC9016151562589078', 15, 1, 'yamaha', '', 'BG223D', 'service', 'asds', 'batal', '2019-07-08'),
 ('SP2759151562042883', 15, 1, 'yamaha', '', 'BG 6437 U', 'sparepart', 'Ganti Oli', 'selesai', '2019-07-02'),
 ('SP38310161561733176', 16, 2, 'yamaha', '', 'BG 1817 Z', 'sparepart', 'Ganti bola lampu utama depan', 'selesai', '2019-06-28'),
 ('SP4087141562694488', 14, 1, 'yamaha', 'Mio', 'BG23455XD', 'sparepart', 'asdsd', 'selesai', '2019-07-10'),
@@ -65,8 +65,8 @@ INSERT INTO `booking` (`booking_kode`, `user_id`, `booking_antrian`, `booking_me
 ('SP5968171562044032', 17, 4, 'yamaha', '', 'BG 81 LA', 'sparepart', 'Service\r\n', 'batal', '2019-07-02'),
 ('SP6749151561940359', 15, 1, 'yamaha', '', 'BG 1714 R', 'sparepart', 'ganti oli', 'selesai', '2019-07-01'),
 ('SP7292191561944833', 19, 5, 'yamaha', '', 'BG 1719 P', 'sparepart', 'ganti discpad belakang', 'selesai', '2019-07-01'),
-('SP8061161562043389', 16, 3, 'yamaha', '', 'BG 111 UH', 'sparepart', 'Service Bulanan', 'menunggu', '2019-07-02'),
-('SP8107111561162265', 11, 5, 'yamaha', '', 'BG123', 'sparepart', 'asd', 'menunggu', '2019-06-22'),
+('SP8061161562043389', 16, 3, 'yamaha', '', 'BG 111 UH', 'sparepart', 'Service Bulanan', 'batal', '2019-07-02'),
+('SP8107111561162265', 11, 5, 'yamaha', '', 'BG123', 'sparepart', 'asd', 'batal', '2019-06-22'),
 ('SP8372191561944077', 19, 4, 'yamaha', '', 'BG 1719', 'sparepart', 'ganti oli', 'selesai', '2019-07-01'),
 ('SP9727141561159068', 14, 2, 'yamaha', '', 'BG123xc', 'sparepart', 'asds', 'selesai', '2019-06-22');
 
@@ -107,13 +107,6 @@ CREATE TABLE `pickup` (
   `pickup_est_selesai` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `pickup`
---
-
-INSERT INTO `pickup` (`pickup_id`, `booking_kode`, `montir_id`, `pickup_est_selesai`) VALUES
-(1, 'SC9016151562589078', 1, '2019-07-08 20:36:00');
-
 -- --------------------------------------------------------
 
 --
@@ -135,7 +128,8 @@ INSERT INTO `rincian` (`rincian_id`, `rincian_nama`, `rincian_harga`) VALUES
 (2, 'Oli Yamaha', 52000),
 (3, 'Lampu Sen', 15000),
 (4, 'Spion', 30000),
-(5, 'Helm', 150000);
+(5, 'Helm', 150000),
+(6, 'Baut', 1000);
 
 -- --------------------------------------------------------
 
@@ -261,13 +255,13 @@ ALTER TABLE `montir`
 -- AUTO_INCREMENT for table `pickup`
 --
 ALTER TABLE `pickup`
-  MODIFY `pickup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `pickup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `rincian`
 --
 ALTER TABLE `rincian`
-  MODIFY `rincian_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `rincian_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `transaksi`

@@ -157,6 +157,56 @@ class BackendC extends CI_Controller{
 		}
 	}
 
+	public function save_perbaikan(){
+		$nama = $this->input->post('nama');
+		$harga = $this->input->post('harga');
+
+		$data= [
+			'rincian_nama'	=> $nama,
+			'rincian_harga'	=> $harga,
+		];
+		$q = $this->Mymod->InsertData('rincian',$data);
+		if($q==1){
+			$this->session->set_flashdata('success', 'Anda berhasil menambah data');
+			redirect(base_url('d/perbaikan'));
+		} else {
+			$this->session->set_flashdata('error', 'Gagal menambah data');
+			redirect(base_url('d/perbaikan'));
+		}
+	}
+
+	public function edit_perbaikan(){
+		$id = $this->input->post('id');
+		$nama = $this->input->post('nama');
+		$harga = $this->input->post('harga');
+
+		$data= [
+			'rincian_nama'	=> $nama,
+			'rincian_harga'	=> $harga,
+		];
+		$q = $this->Mymod->UpdateData('rincian',$data,['rincian_id' => $id]);
+		if($q==1){
+			$this->session->set_flashdata('success', 'Anda berhasil merubah data');
+			redirect(base_url('d/perbaikan'));
+		} else {
+			$this->session->set_flashdata('error', 'Gagal merubah data');
+			redirect(base_url('d/perbaikan'));
+		}
+	}
+
+	public function delete_perbaikan(){
+		$id = $this->input->post('id');
+
+		$q = $this->Mymod->DeleteData('rincian',['rincian_id' => $id]);
+		if($q==1){
+			$this->session->set_flashdata('success', 'Anda berhasil menghapus data');
+			redirect(base_url('d/perbaikan'));
+		} else {
+			$this->session->set_flashdata('error', 'Gagal menghapus data');
+			redirect(base_url('d/perbaikan'));
+		}
+	}
+
 	public function konfirmasi_antrian(){
 		$est = $this->input->post('est');
 		$kode = $this->input->post('kode');
